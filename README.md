@@ -15,3 +15,5 @@
 ## Data fetch
 - install axios
 
+- For id generate - install uuid npm
+

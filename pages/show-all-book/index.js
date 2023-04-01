@@ -20,7 +20,7 @@ const Index = () => {
             <table>
                 <thead>
                     <tr>
-                        <th>ID</th>
+                        {/* <th>ID</th> */}
                         <th>Title</th>
                         <th>Author</th>
                         <th>Action</th>
@@ -31,7 +31,7 @@ const Index = () => {
                         books && books.map((book) => {
                             const { id, title, author } = book;
                             return <tr Key={id}>
-                                <td>{id}</td>
+                                {/* <td>{id}</td> */}
                                 <td>{title}</td>
                                 <td>{author}</td>
                                 <td>

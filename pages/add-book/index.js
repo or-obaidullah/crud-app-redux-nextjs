@@ -2,6 +2,8 @@ import { addBook } from "@/features/booksSlice";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from 'next/router'
+import { v4 as uuidv4 } from 'uuid';
+
 
 const Index = () => {
     const [title, setTitle] = useState("")
@@ -9,11 +11,12 @@ const Index = () => {
 
     const dispatch = useDispatch();
     const router = useRouter()
-    const numberOfbook = useSelector((state)=> state.booksReducer.books.length)
+    // const numberOfbook = useSelector((state)=> state.booksReducer.books.length)
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        const book = {id:numberOfbook + 1, title, author};
+        // const book = {id:numberOfbook + 1, title, author};
+        const book = {id:uuidv4(), title, author};
         dispatch(addBook(book));
         router.push("/show-all-book");
     }

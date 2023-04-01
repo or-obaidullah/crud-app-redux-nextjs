@@ -5,7 +5,6 @@ import { useDispatch } from "react-redux";
 
 const Index = () => {
     const {query} = useRouter();
-    console.log(query);
     const [id,setId] = useState(query.id);
     const [title,setTitle] = useState(query.title);
     const [author,setAuthor] = useState(query.author);
