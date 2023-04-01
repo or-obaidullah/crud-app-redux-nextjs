@@ -1,25 +1,26 @@
-import { addBook } from "@/features/booksSlice";
+import { updateBook } from "@/features/booksSlice";
+import { useRouter } from "next/router";
 import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useRouter } from 'next/router'
+import { useDispatch } from "react-redux";
 
 const Index = () => {
-    const [title, setTitle] = useState("")
-    const [author, setAuthor] = useState("")
-
-    const dispatch = useDispatch();
+    const {query} = useRouter();
+    console.log(query);
+    const [id,setId] = useState(query.id);
+    const [title,setTitle] = useState(query.title);
+    const [author,setAuthor] = useState(query.author);
+    const dispatch = useDispatch()
     const router = useRouter()
-    const numberOfbook = useSelector((state)=> state.booksReducer.books.length)
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        const book = {id:numberOfbook + 1, title, author};
-        dispatch(addBook(book));
-        router.push("/show-all-book");
+        dispatch(updateBook({id, title, author}))
+        router.push("/show-all-book", {replace: true});
+
     }
     return (
         <div style={{ marginTop: "80px" }}>
-            <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Add Books</h2>
+            <h2 style={{ textAlign: "center", marginBottom: "20px" }}>Edit Books</h2>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="title">Title</label>
@@ -45,7 +46,7 @@ const Index = () => {
                         required
                     />
                 </div>
-                <button type="submit">Add Book</button>
+                <button type="submit">Update Book</button>
             </form>
         </div>
     );

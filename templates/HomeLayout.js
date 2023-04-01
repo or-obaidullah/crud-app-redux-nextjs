@@ -16,6 +16,8 @@ const HomeLayout = ({children}) => {
           </div>
           <div className='rightpart'>
             {children}
+
+            <footer style={{position: "absolute",top: "95%",left: "50%",transform: "translate(-50%,-50%)"}}><small> &#169;copyright all rights reserved-2023</small></footer>
           </div>
         </div>
       </section>
